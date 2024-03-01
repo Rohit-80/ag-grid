@@ -8,18 +8,24 @@ import {  AgGridModule } from 'ag-grid-angular';
 import { LicenseManager ,} from 'ag-grid-enterprise'
 // import { SimpleCellRenderer } from './simple-cell-renderer.component';
 import 'ag-grid-enterprise';
+import { SeverSideRenderingComponent } from './sever-side-rendering/sever-side-rendering.component';
+import { HttpClientModule } from '@angular/common/http';
 // LicenseManager.setLicenseKey("your license key")
 // import "ag-grid-enterprise";
 
 @NgModule({
   declarations: [
     AppComponent,
+    SeverSideRenderingComponent,
+    
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AgGridModule,
+    HttpClientModule,
     
     
     

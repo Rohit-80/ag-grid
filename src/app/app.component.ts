@@ -20,13 +20,13 @@ import {
 
     <!-- The AG Grid component -->
 
-    <ag-grid-angular
+    <!-- <ag-grid-angular
       class="ag-theme-quartz"
       style="height: 500px;"
       [rowData]="rowDatas"
       [columnDefs]="columnDefss"
       [defaultColDef]="defaultColDef"
-   
+      [pivotMode]="true"
       [pagination]="true"
       [detailCellRendererParams]="detailCellRendererParams"
       [rowSelection]="'multiple'"
@@ -37,11 +37,16 @@ import {
       (gridReady)="onGridReady($event)"
       [enableBrowserTooltips]="true"
       [masterDetail]="true"
-      
+      [rowGroupPanelShow]="'always'"
+      [groupDisplayType]="'multipleColumns'"
       [undoRedoCellEditing]="undoRedoCellEditing"
       [undoRedoCellEditingLimit]="undoRedoCellEditingLimit"
     >
-    </ag-grid-angular>
+    </ag-grid-angular> -->
+
+
+
+    <app-sever-side-rendering></app-sever-side-rendering>
   `,
   styleUrls: ['./app.component.css'],
 })
@@ -84,6 +89,7 @@ export class AppComponent {
         suppressCount: false,
         checkbox: false,
         suppressHeaderMenuButton : true,
+
         //  innerRenderer: SimpleCellRenderer,
         suppressDoubleClickExpand: true,
         suppressEnterExpand: true,
@@ -92,12 +98,18 @@ export class AppComponent {
     {
       field: 'name',
       editable: true,
+      rowGroup : true,
       cellEditor: 'agTextCellEditor',
+
       cellRenderer: 'agGroupCellRenderer',
     },
     {
       editable: true,
       field: 'age',
+      rowGroup : true, 
+      rowGroupIndex : 0,
+      pivot : true,
+      hide : true,
       enableCellChangeFlash: true,
       cellEditor: 'agRichSelectCellEditor',
       cellEditorParams: {
